@@ -17,6 +17,7 @@ namespace Web.Pages.Business.Tool
 
         public void OnGet()
         {
+
         }
 
         public IActionResult OnPostCommaSeparated(string input)
