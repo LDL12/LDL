@@ -1,0 +1,37 @@
+﻿@model Web.Pages.Business.LotteryTicket._TableModel
+@{
+}
+
+<style>
+    th, td
+    {
+        white-space: nowrap; /* 让内容在同一行显示 */
+        overflow: hidden; /* 超出的内容隐藏 */
+        text-overflow: ellipsis; /* 如果内容超出以...展示 */
+    }
+</style>
+
+@if (Model?.LotteryTickets != null && Model?.LotteryTickets?.Count > 0)
+{
+    <table class="table table-hover table-bordered mt-1">
+        <thead>
+            <tr>
+                <th scope="col">期号</th>
+                <th scope="col">前五</th>
+                <th scope="col">后二</th>
+                <th scope="col">开奖日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lotteryTicket in Model.LotteryTickets)
+            {
+                <tr>
+                    <th scope="row">@lotteryTicket.Issueno</th>
+                    <td>@lotteryTicket.FirstNumber</td>
+                    <td>@lotteryTicket.BehindNumber</td>
+                    <td>@lotteryTicket.OpenDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

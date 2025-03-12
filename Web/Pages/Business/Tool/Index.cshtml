@@ -1,0 +1,112 @@
+﻿@page
+@model Web.Pages.Business.Tool.IndexModel
+@{
+    ViewData["Title"] = "Tool";
+}
+@await Html.PartialAsync("_Tip", new Shared._TipModel() { })
+
+<style>
+    .card-body
+    {
+        height: 150px;
+        max-height: 200px;
+        overflow-y: auto; /* 当内容超出时显示滚动条 */
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        @* 格式转换 *@
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body row w-full">
+                    <div class="col-md-4 h-full">
+                        <textarea class="w-full h-80" id="input"></textarea>
+                        <div>
+                            <button class="btn btn-secondary btn-xs" onclick="CopyTextToClipboard($('#input').val());$(this).focus();">复制</button>
+                            <button class="btn btn-secondary btn-xs" onclick="$('#input').val('')">清空</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-primary btn-xs" onclick="CommaSeparated()">逗号分隔</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                        <button class="btn btn-primary btn-xs">xxx</button>
+                    </div>
+                    <div class="col-md-4 h-full">
+                        <textarea readonly class="w-full h-80" id="output"></textarea>
+                        <div>
+                            <button class="btn btn-secondary btn-xs" onclick="CopyTextToClipboard($('#output').val());$(this).focus();">复制</button>
+                            <button class="btn btn-secondary btn-xs" onclick="$('#output').val('')">清空</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">卡片标题2</h5>
+                    <p class="card-text">一些描述性的文本。</p>
+                    <a href="#" class="btn btn-primary">进入详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">卡片标题1</h5>
+                    <p class="card-text">一些描述性的文本。</p>
+                    <a href="#" class="btn btn-primary">进入详情</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">卡片标题2</h5>
+                    <p class="card-text">一些描述性的文本。</p>
+                    <a href="#" class="btn btn-primary">进入详情</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">卡片标题3</h5>
+                    <p class="card-text">一些描述性的文本。</p>
+                    <a href="#" class="btn btn-primary">进入详情</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function CommaSeparated()
+        {
+            var data = $("#input").val();
+            if(!IsValidData(data))
+            {
+                _Tip("请先输入！");
+                return;
+            }
+
+            $.custom.post("CommaSeparated",function(rv)
+            {
+                $("#output").val(rv);
+            }, { input: data });
+        }
+    </script>
+}

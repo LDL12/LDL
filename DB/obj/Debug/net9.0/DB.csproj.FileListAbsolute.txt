@@ -1,0 +1,15 @@
+D:\LDL\DB\bin\Debug\net9.0\DB.deps.json
+D:\LDL\DB\bin\Debug\net9.0\DB.dll
+D:\LDL\DB\bin\Debug\net9.0\DB.pdb
+D:\LDL\DB\bin\Debug\net9.0\Models.dll
+D:\LDL\DB\bin\Debug\net9.0\Models.pdb
+D:\LDL\DB\obj\Debug\net9.0\DB.csproj.AssemblyReference.cache
+D:\LDL\DB\obj\Debug\net9.0\DB.GeneratedMSBuildEditorConfig.editorconfig
+D:\LDL\DB\obj\Debug\net9.0\DB.AssemblyInfoInputs.cache
+D:\LDL\DB\obj\Debug\net9.0\DB.AssemblyInfo.cs
+D:\LDL\DB\obj\Debug\net9.0\DB.csproj.CoreCompileInputs.cache
+D:\LDL\DB\obj\Debug\net9.0\DB.csproj.Up2Date
+D:\LDL\DB\obj\Debug\net9.0\DB.dll
+D:\LDL\DB\obj\Debug\net9.0\refint\DB.dll
+D:\LDL\DB\obj\Debug\net9.0\DB.pdb
+D:\LDL\DB\obj\Debug\net9.0\ref\DB.dll

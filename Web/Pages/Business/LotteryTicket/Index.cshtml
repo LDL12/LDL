@@ -1,0 +1,38 @@
+﻿@page
+@model Web.Pages.Business.LotteryTicket.IndexModel
+@{
+    ViewData["Title"] = "LotteryTicket";
+}
+
+<div class="container mt-5">
+    <div class="row h-80">
+        <div class="col-md-5">
+            @* <button class="btn btn-primary" onclick="RefreshTable()">查询（近十期）</button> *@
+            <div id="_Table" class="full">
+                @await Html.PartialAsync("_Table", Model._TableModel)
+            </div>
+        </div>
+        <div class="col-md-7" style="text-align: center;">
+            <button class="btn btn-primary" onclick="Predicted()">立即预测</button>
+            <pre id="predicted_result" style="margin-top:20px;"></pre>
+        </div>
+    </div>
+</div>
+
+<script>
+    // function RefreshTable()
+    // {
+    //     $.custom.post("RefreshTable",function(rv)
+    //     {
+    //         $('#_Table').html(rv);
+    //     });
+    // }
+
+    function Predicted()
+    {
+        $.custom.post("Predicted",function(rv)
+        {
+            $("#predicted_result").text(rv);
+        });
+    }
+</script>

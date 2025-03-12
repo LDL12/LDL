@@ -1,0 +1,7 @@
+﻿/*更小的按钮尺寸*/
+.btn-xs
+{
+    font-size: 0.7rem; /* 调整字体大小 */
+    padding: 0.25rem 0.5rem; /* 减少内边距 */
+    line-height: 1; /* 根据需要调整行高 */
+}
