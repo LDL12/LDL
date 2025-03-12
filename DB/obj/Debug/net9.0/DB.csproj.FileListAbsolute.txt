@@ -13,3 +13,4 @@ D:\LDL\DB\obj\Debug\net9.0\DB.dll
 D:\LDL\DB\obj\Debug\net9.0\refint\DB.dll
 D:\LDL\DB\obj\Debug\net9.0\DB.pdb
 D:\LDL\DB\obj\Debug\net9.0\ref\DB.dll
+D:\LDL\DB\obj\Debug\net9.0\DB.sourcelink.json
