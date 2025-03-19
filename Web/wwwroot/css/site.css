@@ -49,6 +49,11 @@ body
     width: 100%;
 }
 
+.w-50
+{
+    width: 50%;
+}
+
 .h-full
 {
     height: 100%;
