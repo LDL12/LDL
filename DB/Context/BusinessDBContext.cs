@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DB.Context
 {
-    public class BusinessContext : DbContext
+    public class BusinessDBContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Business");
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DB.Context
 {
-    public class UserContext : DbContext
+    public class UserDBContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("User");
 
