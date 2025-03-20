@@ -37,7 +37,7 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-primary" onclick="CommaSeparated('input_1','output_1')">逗号分隔</button>
+                    <button class="btn btn-primary btn-primary" onclick="CommaSeparated()">逗号分隔</button>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-primary" onclick="CommaSeparated()">逗号分隔</button>
+                    <button class="btn btn-primary btn-primary" onclick="Intersect()">交集</button>
                 </div>
             </div>
         </div>
@@ -104,9 +104,9 @@
 
 @section Scripts {
     <script>
-        function CommaSeparated(input, output)
+        function CommaSeparated()
         {
-            var data = $("#" + input).val();
+            var data = $("#input_1").val();
             if(!IsValidData(data))
             {
                 _Tip("请先输入！");
@@ -115,8 +115,24 @@
 
             $.custom.post("CommaSeparated",function(rv)
             {
-                $("#" + output).val(rv);
+                $("#output_1").val(rv);
             }, { input: data });
+        }
+
+        function Intersect()
+        {
+            var data1 = $("#input_2_1").val();
+            var data2 = $("#input_2_2").val();
+            if(!IsValidData(data1) || !IsValidData(data2))
+            {
+                _Tip("请先输入！");
+                return;
+            }
+
+            $.custom.post("Intersect",function(rv)
+            {
+                $("#output_2").val(rv);
+            }, { input1: data1, input2: data2 });
         }
     </script>
 }
