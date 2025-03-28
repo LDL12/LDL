@@ -1,25 +1,19 @@
-using Business.LotteryTicket;
-using Common;
 using Common.Extensions;
-using Common.Result;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
-using System.Threading.Tasks;
 
-namespace Web.Pages.Business.Tool
+namespace Web.Pages.Business.DataProcessing
 {
     public class IndexModel : PageModel
     {
-        private IHttpClientFactory _httpClientFactory;
-        public IndexModel(IHttpClientFactory httpClientFactory)
-        {
-            _httpClientFactory = httpClientFactory;
-        }
+        //private IHttpClientFactory _httpClientFactory;
+        //public IndexModel(IHttpClientFactory httpClientFactory)
+        //{
+        //    _httpClientFactory = httpClientFactory;
+        //}
 
         public void OnGet()
         {
-
         }
 
         /// <summary>
@@ -96,6 +90,5 @@ namespace Web.Pages.Business.Tool
             var rv = array1.Except(array2, StringComparer.OrdinalIgnoreCase);
             return new JsonResult(string.Join(",", rv));
         }
-
     }
 }
