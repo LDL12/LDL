@@ -1,5 +1,5 @@
 ﻿//复制到剪切板
-function CopyTextToClipboard(text)
+function CopyToClipboard(text)
 {
     // 创建一个临时的input元素
     var $tempTextarea = $("<textarea>");

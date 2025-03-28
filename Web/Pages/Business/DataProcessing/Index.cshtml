@@ -1,0 +1,144 @@
+﻿@page
+@model Web.Pages.Business.DataProcessing.IndexModel
+@{
+    ViewData["Title"] = "DataProcessing";
+}
+@await Html.PartialAsync("_Tip", new Shared._TipModel() { })
+
+<style>
+    .card-body
+    {
+        height: 150px;
+        max-height: 200px;
+        overflow-y: auto; /* 当内容超出时显示滚动条 */
+    }
+
+    textarea
+    {
+        border: none;
+        outline: none;
+        resize: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <textarea class="w-full h-80" id="input" placeholder="输入..."></textarea>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#input').val());$(this).focus();">复制</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#input').val('')">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('SeparateByComma','input','output')">逗号分隔</button>
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('SeparateByNewline','input','output')">换行分隔</button>
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('Distinct','input','output')">去重</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <textarea readonly class="w-full h-80" id="output" placeholder="输出..."></textarea>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#output').val());$(this).focus();">复制</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#output').val('')">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <textarea id="first_input" class="w-full h-80" placeholder="输入..."></textarea>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#first_input').val());$(this).focus();">复制</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#first_input').val('')">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <textarea id="second_input" class="w-full h-80" placeholder="输入..."></textarea>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#second_input').val());$(this).focus();">复制</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#second_input').val('')">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Intersect','first_input','second_input','output_2')">交集</button>
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Concat','first_input','second_input','output_2')">并集</button>
+                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Except','first_input','second_input','output_2')">差集(A\B)</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <textarea readonly class="w-full h-80" id="output_2" placeholder="输出..."></textarea>
+                    <div>
+                        <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#output_2').val());$(this).focus();">复制</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#output_2').val('')">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function CheckAndPost3(route, inputId, outputId)
+        {
+            var data = $("#" + inputId).val();
+            if(!IsValidData(data))
+            {
+                _Tip("请先输入！");
+                return;
+            }
+
+            $.custom.post(route, function(rv)
+            {
+                $("#" + outputId).val(rv);
+            }, { input: data });
+        }
+
+        function CheckAndPost4(route, firstInputId, secondInputId, outputId)
+        {
+            var firstInput = $("#" + firstInputId).val();
+            var secondInput = $("#" + secondInputId).val();
+            if(!IsValidData(firstInput) || !IsValidData(secondInput))
+            {
+                _Tip("请先输入！");
+                return;
+            }
+
+            $.custom.post(route, function(rv)
+            {
+                $("#" + outputId).val(rv);
+            }, { firstInput: firstInput, secondInput: secondInput });
+        }
+
+    </script>
+}
