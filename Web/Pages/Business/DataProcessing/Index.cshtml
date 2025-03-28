@@ -30,6 +30,7 @@
                     <div>
                         <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#input').val());$(this).focus();">复制</button>
                         <button class="btn btn-secondary btn-xs" onclick="$('#input').val('')">清空</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#input').val($('#output').val())">结果反置</button>
                     </div>
                 </div>
             </div>
@@ -38,9 +39,13 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('SeparateByComma','input','output')">逗号分隔</button>
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('SeparateByNewline','input','output')">换行分隔</button>
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost3('Distinct','input','output')">去重</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('SeparateByComma','input','output')">逗号分隔</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('SeparateByNewline','input','output')">换行分隔</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('Distinct','input','output')">去重</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('SortAscending','input','output')">正序</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('NumberSortAscending','input','output')">正序（数字）</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('Reverse','input','output')">反转</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost3('Sha512','input','output')">加密（Sha512）</button>
                 </div>
             </div>
         </div>
@@ -66,6 +71,7 @@
                     <div>
                         <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#first_input').val());$(this).focus();">复制</button>
                         <button class="btn btn-secondary btn-xs" onclick="$('#first_input').val('')">清空</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#first_input').val($('#output_2').val())">结果反置</button>
                     </div>
                 </div>
             </div>
@@ -78,6 +84,7 @@
                     <div>
                         <button class="btn btn-secondary btn-xs" onclick="CopyToClipboard($('#second_input').val());$(this).focus();">复制</button>
                         <button class="btn btn-secondary btn-xs" onclick="$('#second_input').val('')">清空</button>
+                        <button class="btn btn-secondary btn-xs" onclick="$('#second_input').val($('#output_2').val())">结果反置</button>
                     </div>
                 </div>
             </div>
@@ -86,9 +93,9 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Intersect','first_input','second_input','output_2')">交集</button>
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Concat','first_input','second_input','output_2')">并集</button>
-                    <button class="btn btn-primary btn-xs" onclick="CheckAndPost4('Except','first_input','second_input','output_2')">差集(A\B)</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost4('Intersect','first_input','second_input','output_2')">交集</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost4('Concat','first_input','second_input','output_2')">并集</button>
+                    <button class="btn btn-primary btn-xs mb-1" onclick="CheckAndPost4('Except','first_input','second_input','output_2')">差集(A\B)</button>
                 </div>
             </div>
         </div>
