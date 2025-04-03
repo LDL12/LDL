@@ -41,12 +41,9 @@ namespace Models.DB.Admin
 
         [Column("status"), Description("状态")]
         public UserStatus Status { get; set; }
-
-        [Column("salt"), Description("盐值")]
-        public required string Salt { get; set; }
     }
 
-    public enum UserStatus
+    public enum UserStatus : byte
     {
         [Description("正常")]
         Active = 0,

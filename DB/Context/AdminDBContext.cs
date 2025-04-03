@@ -10,7 +10,9 @@ namespace DB.Context
 {
     public class AdminDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Admin");
+        public AdminDBContext(DbContextOptions<AdminDBContext> options) : base(options)
+        {
+        }
 
         public required DbSet<User> Users { get; set; }
     }

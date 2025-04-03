@@ -1,12 +1,15 @@
 using Common.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Cryptography;
 using System.Text;
+using Web.Pages.BasePageModel;
 
 namespace Web.Pages.Business.DataProcessing
 {
-    public class IndexModel : PageModel
+    [Authorize]
+    public class IndexModel : UserPageModel
     {
         //private IHttpClientFactory _httpClientFactory;
         //public IndexModel(IHttpClientFactory httpClientFactory)
