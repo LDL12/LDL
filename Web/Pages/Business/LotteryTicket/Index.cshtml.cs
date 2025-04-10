@@ -1,14 +1,16 @@
 using Business.LotteryTicket;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Models.DB.Business;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Web.Pages.BasePageModel;
 
 namespace Web.Pages.Business.LotteryTicket
 {
-    public class IndexModel : PageModel
+    public class IndexModel : UserPageModel
     {
         private IHttpClientFactory _httpClientFactory;
         public IndexModel(IHttpClientFactory httpClientFactory)

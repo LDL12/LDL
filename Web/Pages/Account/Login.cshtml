@@ -1,0 +1,54 @@
+﻿@page
+@model Web.Pages.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    @await Html.PartialAsync("_CommonCSS")
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-end align-items-center" style="height: 100vh;">
+            <div class="col-6">
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <form method="post" style="height: 40vh; border: 1px solid grey;">
+                            @Html.AntiForgeryToken()
+
+                            <div class="row align-items-center h-full">
+                                <div style="padding: 0 50px;">
+                                    <div class="mb-3">
+                                        <label for="user_name" class="form-label">Username</label>
+                                        <input type="text" id="user_name" asp-for="UserName" class="form-control">
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input type="password" id="password" asp-for="Password" class="form-control">
+                                    </div>
+
+                                    <button type="submit" asp-page-handler="Login" class="btn btn-primary w-full">Login</button>
+
+                                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                                    {
+                                        <div class="alert alert-danger mt-3">@Model.ErrorMessage</div>
+                                    }
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @await Html.PartialAsync("_CommonJS")
+</body>
+</html>

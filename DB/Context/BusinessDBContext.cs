@@ -10,7 +10,9 @@ namespace DB.Context
 {
     public class BusinessDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlServer("Business");
+        public BusinessDBContext(DbContextOptions<BusinessDBContext> options) : base(options)
+        {
+        }
 
         public required DbSet<TanShu14LotteryTicket> TanShu14LotteryTickets { get; set; }
     }
