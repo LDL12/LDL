@@ -19,8 +19,8 @@
 </head>
 <body>
     @Html.AntiForgeryToken()
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header id="layout_header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand @IsActive("/")" asp-area="" asp-page="/Index">LDL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -41,19 +41,55 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div id="layout_container" class="container" style="overflow-y:auto;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="layout_footer" class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - LDL
         </div>
     </footer>
 
     @await Html.PartialAsync("_CommonJS")
+
+    <script>
+        Resize();
+
+        // 监听，当分辨率改变时，调用重置方法
+        window.addEventListener('resize', Resize);
+
+        function Resize()
+        {
+             // 获取视口的高度（以像素为单位）
+            const viewportHeightPx = window.innerHeight;
+            var containerHeight = viewportHeightPx - GetElementHeight('layout_header') - GetElementHeight('layout_footer');
+            containerHeight = Math.max(containerHeight,100);
+
+            $("#layout_container").css('height', containerHeight + 'px');
+        }
+       
+        function GetElementHeight(id)
+        {
+            // 获取目标元素
+            const element = document.getElementById(id);
+
+            // 使用 getBoundingClientRect() 获取元素的尺寸信息（不包括 margin）
+            const rect = element.getBoundingClientRect();
+
+            // 使用 getComputedStyle() 获取元素的 margin 样式
+            const style = window.getComputedStyle(element);
+
+            // 计算 margin 的高度
+            const marginTop = parseFloat(style.marginTop);
+            const marginBottom = parseFloat(style.marginBottom);
+
+            // 计算总高度（包括 margin）
+            return rect.height + marginTop + marginBottom;
+        }
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
