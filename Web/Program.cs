@@ -11,7 +11,7 @@ namespace Web
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<AdminDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Admin")));
-            builder.Services.AddDbContext<AdminDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Business")));
+            builder.Services.AddDbContext<BusinessDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Business")));
 
             builder.Services.AddRazorPages();
 

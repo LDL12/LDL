@@ -8,7 +8,6 @@ using Web.Pages.BasePageModel;
 
 namespace Web.Pages.Business.DataProcessing
 {
-    [Authorize]
     public class IndexModel : UserPageModel
     {
         //private IHttpClientFactory _httpClientFactory;

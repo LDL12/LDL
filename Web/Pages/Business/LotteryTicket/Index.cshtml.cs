@@ -10,7 +10,6 @@ using Web.Pages.BasePageModel;
 
 namespace Web.Pages.Business.LotteryTicket
 {
-    [Authorize]
     public class IndexModel : UserPageModel
     {
         private IHttpClientFactory _httpClientFactory;

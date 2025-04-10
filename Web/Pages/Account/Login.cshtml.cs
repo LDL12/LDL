@@ -6,11 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 using System.Security.Principal;
-using Web.Pages.BasePageModel;
 
 namespace Web.Pages
 {
-    public class LoginModel : UserPageModel
+    public class LoginModel : PageModel
     {
         private readonly AdminDBContext _adminDBContext;
 

@@ -5,7 +5,6 @@ using Web.Pages.BasePageModel;
 
 namespace Web.Pages;
 
-[Authorize]
 public class IndexModel : UserPageModel
 {
     private readonly ILogger<IndexModel> _logger;
