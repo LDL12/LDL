@@ -63,31 +63,8 @@
 
         function Resize()
         {
-             // 获取视口的高度（以像素为单位）
-            const viewportHeightPx = window.innerHeight;
-            var containerHeight = viewportHeightPx - GetElementHeight('layout_header') - GetElementHeight('layout_footer');
-            containerHeight = Math.max(containerHeight,100);
-
-            $("#layout_container").css('height', containerHeight + 'px');
-        }
-       
-        function GetElementHeight(id)
-        {
-            // 获取目标元素
-            const element = document.getElementById(id);
-
-            // 使用 getBoundingClientRect() 获取元素的尺寸信息（不包括 margin）
-            const rect = element.getBoundingClientRect();
-
-            // 使用 getComputedStyle() 获取元素的 margin 样式
-            const style = window.getComputedStyle(element);
-
-            // 计算 margin 的高度
-            const marginTop = parseFloat(style.marginTop);
-            const marginBottom = parseFloat(style.marginBottom);
-
-            // 计算总高度（包括 margin）
-            return rect.height + marginTop + marginBottom;
+            var containerHeight = window.innerHeight - $('#layout_header').outerHeight(true) - $('#layout_footer').outerHeight(true);
+            $("#layout_container").css('height', Math.max(containerHeight, 100) + 'px');
         }
     </script>
 
