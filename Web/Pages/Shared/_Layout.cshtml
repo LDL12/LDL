@@ -19,8 +19,8 @@
 </head>
 <body>
     @Html.AntiForgeryToken()
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header id="layout_header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
             <div class="container">
                 <a class="navbar-brand @IsActive("/")" asp-area="" asp-page="/Index">LDL</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -41,19 +41,32 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div id="layout_container" class="container" style="overflow-y:auto;">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer id="layout_footer" class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - LDL
         </div>
     </footer>
 
     @await Html.PartialAsync("_CommonJS")
+
+    <script>
+        Resize();
+
+        // 监听，当分辨率改变时，调用重置方法
+        window.addEventListener('resize', Resize);
+
+        function Resize()
+        {
+            var containerHeight = window.innerHeight - $('#layout_header').outerHeight(true) - $('#layout_footer').outerHeight(true);
+            $("#layout_container").css('height', Math.max(containerHeight, 100) + 'px');
+        }
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

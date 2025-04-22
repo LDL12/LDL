@@ -56,12 +56,13 @@ namespace Web.Pages
             // 签发身份 Cookie
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
                 new Claim(ClaimTypes.Name, UserName),
             };
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
             {
-                IsPersistent = false,
+                IsPersistent = false,//是否要求在浏览器关闭后cookie依旧有效
                 ExpiresUtc = DateTimeOffset.UtcNow.AddHours(1),
             };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
